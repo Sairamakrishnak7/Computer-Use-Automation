@@ -1,9 +1,0 @@
-{
-  "status": "business_outcome",
-  "capability": "lookup_savings_balance",
-  "outputs": {},
-  "business_outcome": "member_not_found",
-  "error_code": null,
-  "step_id": 4,
-  "message": "No member was found for that identifier."
-}

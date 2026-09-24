@@ -330,3 +330,13 @@ These correspond to:
 5. Replay with `99999` and show the `member_not_found` business outcome.
 6. Run the handoff artifact and demonstrate pause → manual control → resume.
 7. Show the evidence folders and explain how discovery and replay are separated.
+
+## Human handoff evidence
+
+`evidence/replay_20260924T143314670105Z/` contains a real pause → human control → resume run of the sub-account handoff capability:
+
+- `intervention.json`: why automation paused, the URL before and after, who held control, and the operator's note
+- `handoff_before.png` / `handoff_after.png`: the live session at pause and at resume
+- `events.jsonl`, `result.json`, `final.png`: the full replay log, result, and final state
+
+The run used `artifacts/open_subaccount_handoff.example.json`, a hand-authored fixture rather than a Gemini-discovered artifact, so the handoff path can be exercised without another model call.
