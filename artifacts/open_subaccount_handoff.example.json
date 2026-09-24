@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "capability_name": "open_subaccount_handoff_demo",
+  "description": "Reach the create action and require a person to take control before the irreversible step.",
+  "app_family": "northstar-service-console",
+  "app_version": "demo-1",
+  "inputs": [
+    {"name": "member_id", "type": "string", "required": true, "description": "Synthetic member number"},
+    {"name": "nickname", "type": "string", "required": true, "description": "Sub-account nickname"}
+  ],
+  "outputs": [],
+  "steps": [
+    {"id": 1, "action": "navigate", "description": "Open the service console", "locators": [], "value": "http://127.0.0.1:5000", "output_name": null, "safe": true},
+    {"id": 2, "action": "click", "description": "Open member search", "locators": [{"by": "role", "value": "Member Search", "role": "link"}], "value": null, "output_name": null, "safe": true},
+    {"id": 3, "action": "type", "description": "Enter member number", "locators": [{"by": "id", "value": "member-number", "role": null}, {"by": "name", "value": "member_id", "role": null}], "value": "{{member_id}}", "output_name": null, "safe": true},
+    {"id": 4, "action": "click", "description": "Find member", "locators": [{"by": "role", "value": "Find Member", "role": "button"}], "value": null, "output_name": null, "safe": true},
+    {"id": 5, "action": "click", "description": "Open new sub-account flow", "locators": [{"by": "role", "value": "Open New Sub-Account", "role": "link"}], "value": null, "output_name": null, "safe": true},
+    {"id": 6, "action": "select", "description": "Choose Holiday Savings", "locators": [{"by": "name", "value": "account_type", "role": null}], "value": "Holiday Savings", "output_name": null, "safe": true},
+    {"id": 7, "action": "type", "description": "Set nickname", "locators": [{"by": "name", "value": "nickname", "role": null}], "value": "{{nickname}}", "output_name": null, "safe": true},
+    {"id": 8, "action": "type", "description": "Set opening deposit", "locators": [{"by": "name", "value": "opening_deposit", "role": null}], "value": "0", "output_name": null, "safe": true},
+    {"id": 9, "action": "click", "description": "Open review screen", "locators": [{"by": "role", "value": "Review Request", "role": "button"}], "value": null, "output_name": null, "safe": true},
+    {"id": 10, "action": "click", "description": "Create sub-account after human approval", "locators": [{"by": "role", "value": "Create Sub-Account", "role": "button"}], "value": null, "output_name": null, "safe": false}
+  ],
+  "checkpoint": {"kind": "text_present", "value": "Sub-account created."},
+  "metadata": {"example_only": true}
+}

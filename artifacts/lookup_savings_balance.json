@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "capability_name": "lookup_savings_balance",
+  "description": "Look up member 12345 and return the current savings balance",
+  "app_family": "northstar-service-console",
+  "app_version": "demo-1",
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "required": true,
+      "description": "Runtime input: member_id"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "savings_balance",
+      "type": "string",
+      "description": "Value extracted for savings_balance"
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "action": "navigate",
+      "description": "Open target application",
+      "locators": [],
+      "value": "http://127.0.0.1:5000",
+      "output_name": null,
+      "safe": true
+    },
+    {
+      "id": 2,
+      "action": "click",
+      "description": "Navigate to the Member Search page to look up member 12345.",
+      "locators": [
+        {
+          "by": "role",
+          "value": "Member Search",
+          "role": "link"
+        },
+        {
+          "by": "text",
+          "value": "Member Search",
+          "role": null
+        }
+      ],
+      "value": null,
+      "output_name": null,
+      "safe": true
+    },
+    {
+      "id": 3,
+      "action": "type",
+      "description": "Type the member number 12345 into the member number input field to search for the member.",
+      "locators": [
+        {
+          "by": "id",
+          "value": "member-number",
+          "role": null
+        },
+        {
+          "by": "name",
+          "value": "member_id",
+          "role": null
+        },
+        {
+          "by": "css",
+          "value": "[aria-label=\"Member Number\"]",
+          "role": null
+        }
+      ],
+      "value": "{{member_id}}",
+      "output_name": null,
+      "safe": true
+    },
+    {
+      "id": 4,
+      "action": "click",
+      "description": "The member number input already has the value 12345, so I can click the Find Member button to perform the search.",
+      "locators": [
+        {
+          "by": "role",
+          "value": "Find Member",
+          "role": "button"
+        }
+      ],
+      "value": null,
+      "output_name": null,
+      "safe": true
+    },
+    {
+      "id": 5,
+      "action": "extract",
+      "description": "We are on the member detail page and need to extract the savings balance as requested by the goal.",
+      "locators": [
+        {
+          "by": "css",
+          "value": "[data-field=\"savings_balance\"]",
+          "role": null
+        }
+      ],
+      "value": null,
+      "output_name": "savings_balance",
+      "safe": true
+    }
+  ],
+  "checkpoint": {
+    "kind": "selector_present",
+    "value": "[data-field='savings_balance']"
+  },
+  "metadata": {
+    "discovered_at": "2026-09-23T20:11:42.335344+00:00",
+    "model": "gemini-3.5-flash-lite",
+    "target_origin": "127.0.0.1:5000",
+    "locator_policy": "id/name/data-field/aria-label before role/text fallback",
+    "risk_policy": "irreversible controls require human control"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "capability_name": "lookup_savings_balance",
+  "description": "Look up a member by member number and return the current savings balance.",
+  "app_family": "northstar-service-console",
+  "app_version": "demo-1",
+  "inputs": [
+    {"name": "member_id", "type": "string", "required": true, "description": "Synthetic member number"}
+  ],
+  "outputs": [
+    {"name": "savings_balance", "type": "string", "description": "Current savings balance"}
+  ],
+  "steps": [
+    {"id": 1, "action": "navigate", "description": "Open the service console", "locators": [], "value": "http://127.0.0.1:5000", "output_name": null, "safe": true},
+    {"id": 2, "action": "click", "description": "Open member search", "locators": [{"by": "role", "value": "Member Search", "role": "link"}, {"by": "text", "value": "Member Search", "role": null}], "value": null, "output_name": null, "safe": true},
+    {"id": 3, "action": "type", "description": "Enter member number", "locators": [{"by": "id", "value": "member-number", "role": null}, {"by": "name", "value": "member_id", "role": null}], "value": "{{member_id}}", "output_name": null, "safe": true},
+    {"id": 4, "action": "click", "description": "Submit member search", "locators": [{"by": "role", "value": "Find Member", "role": "button"}, {"by": "text", "value": "Find Member", "role": null}], "value": null, "output_name": null, "safe": true},
+    {"id": 5, "action": "extract", "description": "Read the savings balance", "locators": [{"by": "css", "value": "[data-field='savings_balance']", "role": null}], "value": null, "output_name": "savings_balance", "safe": true}
+  ],
+  "checkpoint": {"kind": "text_present", "value": "Member Detail"},
+  "metadata": {"example_only": true}
+}

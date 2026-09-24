@@ -1,0 +1,89 @@
+{
+  "url": "http://127.0.0.1:5000/members/search",
+  "title": "Member Search",
+  "visible_text": "Northstar Credit Union — Service Console\nHomeMember Search\nMember Search\nMember Number\t\n\t",
+  "elements": [
+    {
+      "ref": "e1",
+      "tag": "a",
+      "type": "",
+      "text": "Home",
+      "label": "Home",
+      "id": "",
+      "name": "",
+      "href": "/",
+      "dataField": "",
+      "ariaLabel": "",
+      "placeholder": "",
+      "value": "",
+      "risk": "",
+      "disabled": false,
+      "actions": [
+        "click",
+        "extract"
+      ],
+      "visible": true
+    },
+    {
+      "ref": "e2",
+      "tag": "a",
+      "type": "",
+      "text": "Member Search",
+      "label": "Member Search",
+      "id": "",
+      "name": "",
+      "href": "/members/search",
+      "dataField": "",
+      "ariaLabel": "",
+      "placeholder": "",
+      "value": "",
+      "risk": "",
+      "disabled": false,
+      "actions": [
+        "click",
+        "extract"
+      ],
+      "visible": true
+    },
+    {
+      "ref": "e3",
+      "tag": "input",
+      "type": "",
+      "text": "",
+      "label": "Member Number",
+      "id": "member-number",
+      "name": "member_id",
+      "href": "",
+      "dataField": "",
+      "ariaLabel": "Member Number",
+      "placeholder": "",
+      "value": "",
+      "risk": "",
+      "disabled": false,
+      "actions": [
+        "type"
+      ],
+      "visible": true
+    },
+    {
+      "ref": "e4",
+      "tag": "input",
+      "type": "submit",
+      "text": "",
+      "label": "Find Member",
+      "id": "",
+      "name": "",
+      "href": "",
+      "dataField": "",
+      "ariaLabel": "",
+      "placeholder": "",
+      "value": "Find Member",
+      "risk": "",
+      "disabled": false,
+      "actions": [
+        "click"
+      ],
+      "visible": true
+    }
+  ]
+}
