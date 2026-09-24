@@ -37,7 +37,7 @@ python automation.py replay --artifact artifacts/lookup_savings_balance.json --p
 | Happy path | `67890` | `success` | `$12,031.44` |
 | Unknown member | `99999` | `business_outcome` | `member_not_found` |
 | Permission denied | `DENIED` | `business_outcome` | `permission_denied` |
-| Session expiry | `TIMEOUT` | `recoverable` | pause for human |
+| Session expiry | `TIMEOUT` | pauses for human handoff; `failure` (`REPLAY_STEP_FAILED`) if the operator does not restore the session | live session handed to operator |
 | Irreversible action | handoff artifact | `success` after resume (`escalated` if no operator is attached) | human takes over the live session |
 
 This project implements a compact record-once / replay-many automation system for applications that do not expose an API.
@@ -340,3 +340,5 @@ These correspond to:
 - `events.jsonl`, `result.json`, `final.png`: the full replay log, result, and final state
 
 The run used `artifacts/open_subaccount_handoff.example.json`, a hand-authored fixture rather than a Gemini-discovered artifact, so the handoff path can be exercised without another model call.
+
+> **Note:** human handoff needs a visible browser. Run handoff and session-expiry scenarios without `--headless`; a headless run can pause but no operator can act in the session.
