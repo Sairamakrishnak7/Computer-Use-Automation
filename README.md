@@ -38,7 +38,7 @@ python automation.py replay --artifact artifacts/lookup_savings_balance.json --p
 | Unknown member | `99999` | `business_outcome` | `member_not_found` |
 | Permission denied | `DENIED` | `business_outcome` | `permission_denied` |
 | Session expiry | `TIMEOUT` | `recoverable` | pause for human |
-| Irreversible action | handoff artifact | `escalated` | human takes over the live session |
+| Irreversible action | handoff artifact | `success` after resume (`escalated` if no operator is attached) | human takes over the live session |
 
 This project implements a compact record-once / replay-many automation system for applications that do not expose an API.
 
