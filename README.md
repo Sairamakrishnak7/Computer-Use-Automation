@@ -1,5 +1,45 @@
 # Computer-Use Automation System
 
+> **The model discovers. The artifact becomes a reusable capability. Deterministic replay is how an agent invokes it in production.**
+
+![Python](https://img.shields.io/badge/python-3.11+-blue) ![Playwright](https://img.shields.io/badge/browser-Playwright-green) ![LLM](https://img.shields.io/badge/discovery-Gemini-orange) ![Replay](https://img.shields.io/badge/replay-no%20LLM-success)
+
+Design write-up: [REPORT.md](REPORT.md)
+
+```mermaid
+flowchart LR
+    G[Natural-language goal] --> D[LLM discovery loop<br/>observe → decide → act]
+    D --> A[(Typed, versioned<br/>capability artifact)]
+    A --> R[Deterministic replay<br/>no model calls]
+    R --> O{RunResult}
+    O -->|success| S[Outputs + checkpoint verified]
+    O -->|business_outcome| B[e.g. member_not_found]
+    O -->|failure| F[Step, error code, screenshot + HTML]
+    R -->|risky / recoverable| H[Human handoff<br/>same live session]
+    H -->|resume| R
+```
+
+## Quickstart (no API key needed)
+
+Replay and tests do not call any model, so you can verify everything without Gemini:
+
+```bash
+pip install -r requirements.txt && playwright install chromium
+python tests.py
+python mock_app.py &
+python automation.py replay --artifact artifacts/lookup_savings_balance.json --param member_id=67890
+```
+
+## Results at a glance
+
+| Scenario | Input | Result status | Output |
+| --- | --- | --- | --- |
+| Happy path | `67890` | `success` | `$12,031.44` |
+| Unknown member | `99999` | `business_outcome` | `member_not_found` |
+| Permission denied | `DENIED` | `business_outcome` | `permission_denied` |
+| Session expiry | `TIMEOUT` | `recoverable` | pause for human |
+| Irreversible action | handoff artifact | `escalated` | human takes over the live session |
+
 This project implements a compact record-once / replay-many automation system for applications that do not expose an API.
 
 A discovery run accepts a natural-language goal and lets an LLM operate a real browser session. Once the goal is completed, the successful flow is converted into a typed, versioned capability artifact. Replay then executes that artifact deterministically without asking the model what to do.
