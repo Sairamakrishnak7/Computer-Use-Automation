@@ -1,0 +1,22 @@
+{"timestamp": "2026-09-24T14:33:16.116057+00:00", "type": "replay_started", "capability": "open_subaccount_handoff_demo", "schema_version": "1.0"}
+{"timestamp": "2026-09-24T14:33:16.116502+00:00", "type": "step_started", "step_id": 1, "action": "navigate", "description": "Open the service console"}
+{"timestamp": "2026-09-24T14:33:16.193483+00:00", "type": "step_completed", "step_id": 1}
+{"timestamp": "2026-09-24T14:33:16.194581+00:00", "type": "step_started", "step_id": 2, "action": "click", "description": "Open member search"}
+{"timestamp": "2026-09-24T14:33:16.311538+00:00", "type": "step_completed", "step_id": 2}
+{"timestamp": "2026-09-24T14:33:16.311605+00:00", "type": "step_started", "step_id": 3, "action": "type", "description": "Enter member number"}
+{"timestamp": "2026-09-24T14:33:16.345165+00:00", "type": "step_completed", "step_id": 3}
+{"timestamp": "2026-09-24T14:33:16.345234+00:00", "type": "step_started", "step_id": 4, "action": "click", "description": "Find member"}
+{"timestamp": "2026-09-24T14:33:16.463528+00:00", "type": "step_completed", "step_id": 4}
+{"timestamp": "2026-09-24T14:33:16.463600+00:00", "type": "step_started", "step_id": 5, "action": "click", "description": "Open new sub-account flow"}
+{"timestamp": "2026-09-24T14:33:16.545390+00:00", "type": "step_completed", "step_id": 5}
+{"timestamp": "2026-09-24T14:33:16.545469+00:00", "type": "step_started", "step_id": 6, "action": "select", "description": "Choose Holiday Savings"}
+{"timestamp": "2026-09-24T14:33:16.553342+00:00", "type": "step_completed", "step_id": 6}
+{"timestamp": "2026-09-24T14:33:16.553406+00:00", "type": "step_started", "step_id": 7, "action": "type", "description": "Set nickname"}
+{"timestamp": "2026-09-24T14:33:16.595635+00:00", "type": "step_completed", "step_id": 7}
+{"timestamp": "2026-09-24T14:33:16.595702+00:00", "type": "step_started", "step_id": 8, "action": "type", "description": "Set opening deposit"}
+{"timestamp": "2026-09-24T14:33:16.609937+00:00", "type": "step_completed", "step_id": 8}
+{"timestamp": "2026-09-24T14:33:16.609993+00:00", "type": "step_started", "step_id": 9, "action": "click", "description": "Open review screen"}
+{"timestamp": "2026-09-24T14:33:16.684082+00:00", "type": "step_completed", "step_id": 9}
+{"timestamp": "2026-09-24T14:33:16.684151+00:00", "type": "step_started", "step_id": 10, "action": "click", "description": "Create sub-account after human approval"}
+{"timestamp": "2026-09-24T14:33:38.051573+00:00", "type": "step_completed", "step_id": 10}
+{"timestamp": "2026-09-24T14:33:38.107733+00:00", "type": "replay_result", "status": "success", "capability": "open_subaccount_handoff_demo", "outputs": {}, "business_outcome": null, "error_code": null, "step_id": null, "message": "Replay completed and checkpoint verified"}

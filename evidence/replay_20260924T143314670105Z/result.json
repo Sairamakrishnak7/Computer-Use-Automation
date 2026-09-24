@@ -1,0 +1,9 @@
+{
+  "status": "success",
+  "capability": "open_subaccount_handoff_demo",
+  "outputs": {},
+  "business_outcome": null,
+  "error_code": null,
+  "step_id": null,
+  "message": "Replay completed and checkpoint verified"
+}

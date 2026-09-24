@@ -603,15 +603,20 @@ def request_human(
     state["completed_at"] = datetime.now(
         timezone.utc
     ).isoformat()
+    page.wait_for_timeout(500)
     state["url_after"] = page.url
     state["operator_note"] = (
         note or "Operator resumed the session"
     )
 
-    page.screenshot(
-        path=str(run_dir / "handoff_after.png"),
-        full_page=True,
-    )
+    try:
+        page.bring_to_front()
+        page.screenshot(
+            path=str(run_dir / "handoff_after.png"),
+            timeout=10000,
+        )
+    except Exception as exc:
+        state["after_screenshot_error"] = type(exc).__name__
     write_json(
         run_dir / "intervention.json",
         state,
@@ -885,7 +890,12 @@ def discover(args):
         sync_playwright() as playwright,
     ):
         browser = playwright.chromium.launch(
-            headless=args.headless
+            headless=args.headless,
+            args=[
+                "--disable-backgrounding-occluded-windows",
+                "--disable-renderer-backgrounding",
+                "--disable-background-timer-throttling",
+            ],
         )
         context = browser.new_context(
             viewport={
@@ -1551,7 +1561,12 @@ def replay(args):
         sync_playwright() as playwright,
     ):
         browser = playwright.chromium.launch(
-            headless=args.headless
+            headless=args.headless,
+            args=[
+                "--disable-backgrounding-occluded-windows",
+                "--disable-renderer-backgrounding",
+                "--disable-background-timer-throttling",
+            ],
         )
         context = browser.new_context(
             viewport={
@@ -1866,12 +1881,16 @@ def replay(args):
                         ),
                     )
 
-            page.screenshot(
-                path=str(
-                    run_dir / "final.png"
-                ),
-                full_page=True,
-            )
+            try:
+                page.bring_to_front()
+                page.screenshot(
+                    path=str(
+                        run_dir / "final.png"
+                    ),
+                    timeout=10000,
+                )
+            except Exception:
+                pass
             write_json(
                 run_dir / "result.json",
                 result.model_dump(),

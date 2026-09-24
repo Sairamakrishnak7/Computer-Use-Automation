@@ -1,0 +1,10 @@
+{
+  "reason": "Risky action requires human approval: irreversible",
+  "url_before": "http://127.0.0.1:5000/members/12345/subaccounts/review",
+  "control": "automation",
+  "started_at": "2026-09-24T14:33:16.688598+00:00",
+  "completed": true,
+  "completed_at": "2026-09-24T14:33:37.480507+00:00",
+  "url_after": "http://127.0.0.1:5000/members/12345/subaccounts/create",
+  "operator_note": "Reviewed the request details and clicked Create Sub-Account manually"
+}
